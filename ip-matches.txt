@@ -1,0 +1,200 @@
+﻿C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\(tabs)\fees.tsx
+Line: 14
+Code: const API_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\admin\attendance.tsx
+Line: 18
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\admin\fee-details.tsx
+Line: 36
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\admin\fee-login.tsx
+Line: 16
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\admin\fee-students.tsx
+Line: 31
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\admin\fees.tsx
+Line: 17
+Code: const API_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\admin\index.tsx
+Line: 81
+Code: "http://192.168.31.70:5000/api/test-results",
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\admin\index.tsx
+Line: 160
+Code: `http://192.168.31.70:5000/api/progress/student/${studentId}`,
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\admin\notifications.tsx
+Line: 17
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\admin\test-results.tsx
+Line: 31
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\admin\user-details.tsx
+Line: 20
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\admin\users.tsx
+Line: 35
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\forgot-password.tsx
+Line: 18
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\reset-password.tsx
+Line: 18
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\test-review.tsx
+Line: 15
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\app\verify-otp.tsx
+Line: 18
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\context\AttendanceContext.tsx
+Line: 81
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\context\AuthContext.tsx
+Line: 60
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\context\CourseContext.tsx
+Line: 63
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\context\CourseContext.tsx
+Line: 66
+Code: "http://192.168.31.70:5000";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\context\LessonContext.tsx
+Line: 57
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\context\NotificationContext.tsx
+Line: 12
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\context\ProfilePhotoContext.tsx
+Line: 26
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\context\ProgressContext.tsx
+Line: 109
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\context\TestContext.tsx
+Line: 100
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\(tabs)\fees.tsx
+Line: 14
+Code: const API_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\admin\attendance.tsx
+Line: 18
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\admin\fee-details.tsx
+Line: 35
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\admin\fee-login.tsx
+Line: 16
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\admin\fee-students.tsx
+Line: 31
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\admin\fees.tsx
+Line: 17
+Code: const API_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\admin\index.tsx
+Line: 81
+Code: "http://192.168.31.70:5000/api/test-results",
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\admin\index.tsx
+Line: 160
+Code: `http://192.168.31.70:5000/api/progress/student/${studentId}`,
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\admin\notifications.tsx
+Line: 17
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\admin\test-results.tsx
+Line: 31
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\admin\user-details.tsx
+Line: 20
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\admin\users.tsx
+Line: 35
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\forgot-password.tsx
+Line: 18
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\reset-password.tsx
+Line: 18
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\test-review.tsx
+Line: 15
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\app\verify-otp.tsx
+Line: 18
+Code: const API_BASE_URL = "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\context\AttendanceContext.tsx
+Line: 81
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\context\AuthContext.tsx
+Line: 60
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\context\CourseContext.tsx
+Line: 63
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\context\CourseContext.tsx
+Line: 66
+Code: "http://192.168.31.70:5000";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\context\LessonContext.tsx
+Line: 57
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\context\NotificationContext.tsx
+Line: 12
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\context\ProfilePhotoContext.tsx
+Line: 26
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\context\ProgressContext.tsx
+Line: 109
+Code: "http://192.168.31.70:5000/api";
+
+C:\Users\ankit\OneDrive\Desktop\Ramanujan\Ramanujan\src\src\context\TestContext.tsx
+Line: 100
+Code: "http://192.168.31.70:5000/api";
+

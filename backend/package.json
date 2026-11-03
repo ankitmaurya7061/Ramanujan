@@ -1,0 +1,27 @@
+{
+  "name": "studypoint-backend",
+  "version": "1.0.0",
+  "description": "StudyPoint E-Learning Backend",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.2",
+    "expo-file-system": "~57.0.7",
+    "expo-image-picker": "~57.0.20",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.18.0",
+    "multer": "^2.4.0",
+    "nodemailer": "^10.0.11",
+    "pdfkit": "^0.20.2",
+    "razorpay": "^2.9.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
