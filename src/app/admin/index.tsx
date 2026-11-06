@@ -78,7 +78,7 @@ export default function AdminDashboard() {
       if (token) {
         try {
           const response = await fetch(
-            "http://192.168.31.222:5000/api/test-results",
+            "https://ramanujan-sybq.onrender.com/api/test-results",
             {
               method: "GET",
               headers: {
@@ -157,7 +157,7 @@ export default function AdminDashboard() {
         if (token && studentId) {
           try {
             const response = await fetch(
-              `http://192.168.31.222:5000/api/progress/student/${studentId}`,
+              `https://ramanujan-sybq.onrender.com/api/progress/student/${studentId}`,
               {
                 method: "GET",
                 headers: {

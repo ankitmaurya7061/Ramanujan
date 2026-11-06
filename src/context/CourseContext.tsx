@@ -60,10 +60,10 @@ const CourseContext =
   );
 
 const API_BASE_URL =
-  "http://192.168.31.222:5000/api";
+  "https://ramanujan-sybq.onrender.com/api";
 
 const SERVER_BASE_URL =
-  "http://192.168.31.222:5000";
+  "https://ramanujan-sybq.onrender.com";
 
 const getToken = async () => {
   return await AsyncStorage.getItem(

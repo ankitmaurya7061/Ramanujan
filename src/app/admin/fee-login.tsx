@@ -13,7 +13,8 @@ import {
 import { router } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const API_BASE_URL = "http://192.168.31.222:5000/api";
+const API_BASE_URL =
+  "https://ramanujan-sybq.onrender.com/api";
 
 export default function FeeLoginScreen() {
   const [username, setUsername] = useState("");

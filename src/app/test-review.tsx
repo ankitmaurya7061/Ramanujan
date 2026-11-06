@@ -12,7 +12,8 @@ import {
   View,
 } from "react-native";
 
-const API_BASE_URL = "http://192.168.31.222:5000/api";
+const API_BASE_URL =
+  "https://ramanujan-sybq.onrender.com/api";
 
 type ReviewAnswer = {
   questionId: string;

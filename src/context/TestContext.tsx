@@ -97,7 +97,7 @@ const TestContext =
   createContext<TestContextType | undefined>(undefined);
 
 const API_BASE_URL =
-  "http://192.168.31.222:5000/api";
+  "https://ramanujan-sybq.onrender.com/api";
 
 const ALLOWED_CLASSES = [6, 7, 8, 9, 10, 11, 12];
 

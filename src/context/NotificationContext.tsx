@@ -9,7 +9,7 @@ import React, {
 import { useAuth } from "./AuthContext";
 
 const API_BASE_URL =
-  "http://192.168.31.222:5000/api";
+  "https://ramanujan-sybq.onrender.com/api";
 
 export type Notification = {
   id: string;

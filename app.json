@@ -1,7 +1,8 @@
+
 {
   "expo": {
-    "name": "Ramanujan",
-    "slug": "Ramanujan",
+    "name": "The Winner Ramanujan Classes",
+    "slug": "the-winner-ramanujan-classes",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -11,7 +12,8 @@
       "icon": "./assets/expo.icon"
     },
     "android": {
-      "package": "com.anonymous.Ramanujan",
+      "package": "com.ankitmaurya.winnerclasses",
+      "versionCode": 1,
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",

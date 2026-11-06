@@ -14,7 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const API_URL = "http://192.168.31.222:5000/api";
+const API_URL = "https://ramanujan-sybq.onrender.com/api";
 
 const CLASSES = [6, 7, 8, 9, 10, 11, 12];
 

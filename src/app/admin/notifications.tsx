@@ -14,7 +14,8 @@ import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const API_BASE_URL = "http://192.168.31.222:5000/api";
+const API_BASE_URL =
+  "https://ramanujan-sybq.onrender.com/api";
 const TOKEN_KEY = "studypoint_token";
 
 type Student = {

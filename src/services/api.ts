@@ -1,21 +1,13 @@
 
 const DEVELOPMENT_API_BASE_URL =
-  "http://192.168.31.222:5000/api";
+  "https://ramanujan-sybq.onrender.com/api";
 
 export const getApiUrl = (): string => {
   const configuredUrl = process.env.EXPO_PUBLIC_API_URL?.trim();
 
-  if (configuredUrl) {
-    return configuredUrl.replace(/\/+$/, "");
-  }
+  const baseUrl = configuredUrl || DEVELOPMENT_API_BASE_URL;
 
-  if (__DEV__) {
-    return DEVELOPMENT_API_BASE_URL;
-  }
-
-  throw new Error(
-    "EXPO_PUBLIC_API_URL is missing. Please configure it before building the APK."
-  );
+  return baseUrl.replace(/\/+$/, "");
 };
 
 export const apiRequest = async (
@@ -23,6 +15,7 @@ export const apiRequest = async (
   options: RequestInit = {}
 ) => {
   const baseUrl = getApiUrl();
+
   const normalizedEndpoint = endpoint.startsWith("/")
     ? endpoint
     : `/${endpoint}`;

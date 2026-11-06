@@ -15,7 +15,8 @@ import {
 import { router, useLocalSearchParams } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
-const API_BASE_URL = "http://192.168.31.222:5000/api";
+const API_BASE_URL =
+  "https://ramanujan-sybq.onrender.com/api";
 
 const COLORS = {
   cyprus: "#004741",
