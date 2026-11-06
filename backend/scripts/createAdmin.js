@@ -1,53 +1,80 @@
-const dotenv = require("dotenv");
+require("dotenv").config();
+
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
+const readline = require("readline/promises");
+const { stdin, stdout } = require("process");
 
 const User = require("../src/models/User");
 
-dotenv.config();
+const rl = readline.createInterface({
+  input: stdin,
+  output: stdout,
+});
 
 const createAdmin = async () => {
   try {
+    const currentEmail = (
+      await rl.question("Current admin email: ")
+    ).trim().toLowerCase();
+
+    const newEmail = (
+      await rl.question("New admin email: ")
+    ).trim().toLowerCase();
+
+    const newPassword = await rl.question(
+      "New admin password: "
+    );
+
+    if (!currentEmail || !newEmail || !newPassword) {
+      throw new Error("All fields are required");
+    }
+
+    if (newPassword.length < 12) {
+      throw new Error("Password must be at least 12 characters");
+    }
+
+    if (!process.env.MONGODB_URI) {
+      throw new Error("MONGODB_URI is missing");
+    }
+
     await mongoose.connect(process.env.MONGODB_URI);
 
     console.log("MongoDB Connected");
 
-    const email = "admin@studypoint.com";
-    const password = "admin123";
+    const admin = await User.findOne({
+      email: currentEmail,
+      role: "admin",
+    });
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    let admin = await User.findOne({ email });
-
-    if (admin) {
-      admin.name = "StudyPoint Admin";
-      admin.password = hashedPassword;
-      admin.role = "admin";
-
-      await admin.save();
-
-      console.log("Admin updated successfully");
-    } else {
-      admin = await User.create({
-        name: "StudyPoint Admin",
-        email,
-        password: hashedPassword,
-        role: "admin",
-        profilePhoto: "",
-      });
-
-      console.log("Admin created successfully");
+    if (!admin) {
+      throw new Error("Existing admin account not found");
     }
 
-    console.log("Email:", admin.email);
-    console.log("Role:", admin.role);
+    const duplicate = await User.findOne({
+      email: newEmail,
+      _id: { $ne: admin._id },
+    });
 
-    await mongoose.connection.close();
+    if (duplicate) {
+      throw new Error("This email is already registered");
+    }
 
-    process.exit(0);
+    admin.email = newEmail;
+    admin.password = await bcrypt.hash(newPassword, 12);
+
+    await admin.save();
+
+    console.log("\nAdmin credentials updated successfully!");
+    console.log("New email:", admin.email);
+    console.log("Password: Securely updated");
+
   } catch (error) {
-    console.error("Admin creation failed:", error);
-    process.exit(1);
+    console.error("\nAdmin update failed:", error.message);
+    process.exitCode = 1;
+  } finally {
+    rl.close();
+    await mongoose.disconnect().catch(() => {});
   }
 };
 
