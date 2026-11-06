@@ -2,6 +2,10 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const User = require("../models/User");
+const dns = require("node:dns");
+
+// Prefer IPv4 for outgoing SMTP connections
+dns.setDefaultResultOrder("ipv4first");
 
 const generateToken = (user) => {
   return jwt.sign(
@@ -22,11 +26,16 @@ const generateToken = (user) => {
 ===================================================== */
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+  connectionTimeout: 15000,
+  greetingTimeout: 15000,
+  socketTimeout: 20000,
 });
 
 /* =====================================================
