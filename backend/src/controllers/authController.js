@@ -1,7 +1,18 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 const User = require("../models/User");
 const { sendEmail } = require("../services/emailService");
+
+// Cryptographically secure 6-digit OTP generator
+const generateOtp = () => {
+  return crypto.randomInt(100000, 1000000).toString();
+};
+
+// SHA-256 OTP Hasher
+const hashOtp = (otp) => {
+  return crypto.createHash("sha256").update(String(otp).trim()).digest("hex");
+};
 
 const generateToken = (user) => {
   return jwt.sign(
@@ -278,11 +289,8 @@ const forgotPassword = async (
       });
     }
 
-    // Generate 6 digit OTP
-    const otp = Math.floor(
-      100000 +
-        Math.random() * 900000
-    ).toString();
+    // Generate cryptographically secure 6 digit OTP
+    const otp = generateOtp();
 
     // OTP valid for 10 minutes
     const otpExpiry = new Date(
@@ -290,11 +298,9 @@ const forgotPassword = async (
         10 * 60 * 1000
     );
 
-    user.resetPasswordOTP =
-      otp;
-
-    user.resetPasswordOTPExpires =
-      otpExpiry;
+    // Store hashed OTP for security
+    user.resetPasswordOTP = hashOtp(otp);
+    user.resetPasswordOTPExpires = otpExpiry;
 
     await user.save();
 
@@ -391,10 +397,13 @@ const verifyResetOTP = async (
       });
     }
 
-    if (
-      user.resetPasswordOTP !==
-      otp.toString()
-    ) {
+    const cleanOtp = String(otp).trim();
+    const hashedInput = hashOtp(cleanOtp);
+    const isMatch =
+      user.resetPasswordOTP === hashedInput ||
+      user.resetPasswordOTP === cleanOtp;
+
+    if (!isMatch) {
       return res.status(400).json({
         success: false,
         message: "Invalid OTP",
@@ -492,10 +501,13 @@ const resetPassword = async (
       });
     }
 
-    if (
-      user.resetPasswordOTP !==
-      otp.toString()
-    ) {
+    const cleanOtp = String(otp).trim();
+    const hashedInput = hashOtp(cleanOtp);
+    const isMatch =
+      user.resetPasswordOTP === hashedInput ||
+      user.resetPasswordOTP === cleanOtp;
+
+    if (!isMatch) {
       return res.status(400).json({
         success: false,
         message: "Invalid OTP",
