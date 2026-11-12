@@ -1,4 +1,13 @@
 const nodemailer = require("nodemailer");
+const dns = require("node:dns");
+
+// Force IPv4 as default result order in Node.js DNS resolution.
+// This prevents ENETUNREACH errors on networks without working IPv6 routes.
+try {
+  dns.setDefaultResultOrder("ipv4first");
+} catch {
+  // Ignore in environments where setDefaultResultOrder is unavailable
+}
 
 /**
  * Multi-provider Email Service
@@ -8,31 +17,54 @@ const nodemailer = require("nodemailer");
  * 3. Nodemailer SMTP (Gmail / Custom SMTP) - for local development, VPS, or paid tiers
  */
 
-// Cached SMTP transporter
-let smtpTransporter = null;
+// Cached SMTP transporters (strictly IPv4)
+let smtpTransporter465 = null;
+let smtpTransporter587 = null;
 
-function getSmtpTransporter() {
-  if (!smtpTransporter) {
-    const user = process.env.EMAIL_USER;
-    const pass = process.env.EMAIL_PASS;
+function getSmtpTransporter(port = 465) {
+  const user = process.env.EMAIL_USER;
+  const pass = process.env.EMAIL_PASS;
 
-    if (!user || !pass) {
-      return null;
+  if (!user || !pass) {
+    return null;
+  }
+
+  if (port === 465) {
+    if (!smtpTransporter465) {
+      smtpTransporter465 = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        family: 4, // Strictly force IPv4 to avoid IPv6 ENETUNREACH
+        auth: {
+          user,
+          pass,
+        },
+        connectionTimeout: 10000,
+        greetingTimeout: 10000,
+        socketTimeout: 15000,
+      });
     }
+    return smtpTransporter465;
+  }
 
-    smtpTransporter = nodemailer.createTransport({
-      service: "gmail",
+  if (!smtpTransporter587) {
+    smtpTransporter587 = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+      family: 4, // Strictly force IPv4
       auth: {
         user,
         pass,
       },
-      connectionTimeout: 8000,
-      greetingTimeout: 8000,
-      socketTimeout: 10000,
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
     });
   }
 
-  return smtpTransporter;
+  return smtpTransporter587;
 }
 
 /**
@@ -135,14 +167,9 @@ async function sendViaResend({ to, subject, text, html }) {
 }
 
 /**
- * Send email using Nodemailer SMTP
+ * Send email using Nodemailer SMTP (Strictly IPv4)
  */
 async function sendViaSmtp({ to, subject, text, html, attachments }) {
-  const transporter = getSmtpTransporter();
-  if (!transporter) {
-    throw new Error("SMTP credentials (EMAIL_USER / EMAIL_PASS) not configured.");
-  }
-
   const mailOptions = {
     from: `"The Winner Ramanujan Classes" <${process.env.EMAIL_USER}>`,
     to,
@@ -155,8 +182,25 @@ async function sendViaSmtp({ to, subject, text, html, attachments }) {
     mailOptions.attachments = attachments;
   }
 
-  const info = await transporter.sendMail(mailOptions);
-  return { success: true, provider: "smtp", messageId: info.messageId };
+  // 1. Try port 465 (SSL IPv4)
+  try {
+    const transporter465 = getSmtpTransporter(465);
+    if (!transporter465) {
+      throw new Error("SMTP credentials (EMAIL_USER / EMAIL_PASS) not configured.");
+    }
+    const info = await transporter465.sendMail(mailOptions);
+    return { success: true, provider: "smtp (port 465, IPv4)", messageId: info.messageId };
+  } catch (err465) {
+    console.warn(`[EmailService] SMTP port 465 failed: ${err465.message}. Retrying via port 587 IPv4...`);
+
+    // 2. Fallback to port 587 (STARTTLS IPv4)
+    const transporter587 = getSmtpTransporter(587);
+    if (!transporter587) {
+      throw err465;
+    }
+    const info = await transporter587.sendMail(mailOptions);
+    return { success: true, provider: "smtp (port 587, IPv4)", messageId: info.messageId };
+  }
 }
 
 /**
@@ -195,12 +239,12 @@ async function sendEmail({ to, subject, text, html, attachments }) {
     }
   }
 
-  // 3. Try Nodemailer SMTP
+  // 3. Try Nodemailer SMTP (Strictly IPv4)
   if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
     try {
-      console.log(`[EmailService] Attempting delivery via SMTP to ${to}...`);
+      console.log(`[EmailService] Attempting delivery via SMTP (IPv4) to ${to}...`);
       const result = await sendViaSmtp({ to, subject, text, html, attachments });
-      console.log(`[EmailService] Delivered via SMTP (messageId: ${result.messageId})`);
+      console.log(`[EmailService] Delivered via ${result.provider} (messageId: ${result.messageId})`);
       return result;
     } catch (err) {
       console.error("[EmailService] SMTP delivery failed:", err.message);
