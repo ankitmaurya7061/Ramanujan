@@ -307,7 +307,7 @@ const forgotPassword = async (
     try {
       await sendEmail({
         to: user.email,
-        subject: "The Winner Ramanujan Classes - Password Reset OTP",
+        subject: "StudyPoint - Password Reset OTP",
         text: `Your The Winner Ramanujan Classes password reset OTP is ${otp}. This OTP is valid for 10 minutes.`,
         html: `
           <div style="font-family: Arial, sans-serif; line-height: 1.6;">

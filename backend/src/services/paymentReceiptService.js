@@ -160,7 +160,7 @@ const buildReceiptHtml = ({
       <header class="header">
         <p class="brand">THE WINNER</p>
         <div class="brand-sub">RAMANUJAN CLASSES</div>
-        <div class="eyebrow">OFFICIAL FEE RECEIPT · STUDYPOINT</div>
+        <div class="eyebrow">OFFICIAL FEE RECEIPT · The Winner Ramanujan Classes</div>
         <h1>Payment Successful</h1>
         <p class="header-copy">
           Your payment has been verified and recorded successfully.
@@ -191,7 +191,7 @@ const buildReceiptHtml = ({
       </section>
       <footer class="footer">
         <strong>The Winner Ramanujan Classes</strong><br />
-        Powered by StudyPoint<br />
+        Powered by The Winner Ramanujan Classes<br />
         ${contactLines || "For assistance, contact the institute administration."}
         <br />Please retain this receipt for your records.
       </footer>
@@ -219,8 +219,8 @@ const buildReceiptText = ({
   instituteAddress,
 }) =>
   [
-    "THE WINNER RAMANUJAN CLASSES",
-    "OFFICIAL FEE RECEIPT · STUDYPOINT",
+    "The Winner Ramanujan Classes",
+    "OFFICIAL FEE RECEIPT · The Winner Ramanujan Classes",
     "PAYMENT SUCCESSFUL",
     "",
     `Receipt Number: ${receiptNumber}`,

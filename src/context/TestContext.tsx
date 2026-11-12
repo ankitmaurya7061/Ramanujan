@@ -1,9 +1,9 @@
 ﻿import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
+    createContext,
+    useContext,
+    useEffect,
+    useState,
 } from "react";
 import { useAuth } from "./AuthContext";
 
@@ -102,7 +102,7 @@ const API_BASE_URL =
 const ALLOWED_CLASSES = [6, 7, 8, 9, 10, 11, 12];
 
 const getToken = async () => {
-  return await AsyncStorage.getItem("studypoint_token");
+  return await AsyncStorage.getItem("The Winner Ramanujan Classes_token");
 };
 
 /* =========================================================

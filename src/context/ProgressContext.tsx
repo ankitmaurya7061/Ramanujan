@@ -1,9 +1,9 @@
 ﻿import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
+    createContext,
+    useCallback,
+    useContext,
+    useEffect,
+    useState,
 } from "react";
 import { AppState } from "react-native";
 import { useAuth } from "./AuthContext";
@@ -221,7 +221,7 @@ export function ProgressProvider({
         ).default;
 
       return await AsyncStorage.getItem(
-        "studypoint_token"
+        "The Winner Ramanujan Classes_token"
       );
     } catch {
       return null;

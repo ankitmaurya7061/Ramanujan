@@ -90,7 +90,7 @@ const createNotification = async (req, res) => {
     if (sendTo === "all") {
       /*
        * IMPORTANT:
-       * In StudyPoint, normal students have role = "user".
+       * In The Winner Ramanujan Classes, normal students have role = "user".
        * Admin has role = "admin".
        */
       const students = await User.find({
@@ -150,7 +150,7 @@ const createNotification = async (req, res) => {
     }
 
     /*
-     * StudyPoint student role = "user"
+     * The Winner Ramanujan Classes student role = "user"
      */
     if (student.role !== "user") {
       return res.status(400).json({

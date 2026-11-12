@@ -1,16 +1,16 @@
-﻿import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Ionicons } from "@expo/vector-icons";
+﻿import { Ionicons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router, useLocalSearchParams } from "expo-router";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
-  RefreshControl,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
+    RefreshControl,
+    SafeAreaView,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from "react-native";
 
 type TestResult = {
@@ -30,7 +30,7 @@ type TestResult = {
 
 const API_BASE_URL =
   "https://ramanujan-sybq.onrender.com/api";
-const TOKEN_KEY = "studypoint_token";
+const TOKEN_KEY = "The Winner Ramanujan Classes_token";
 
 export default function AdminTestResultsScreen() {
   const params = useLocalSearchParams();

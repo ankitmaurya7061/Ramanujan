@@ -1,10 +1,10 @@
 ﻿import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
+    createContext,
+    useCallback,
+    useContext,
+    useEffect,
+    useState,
 } from "react";
 import { useAuth } from "./AuthContext";
 
@@ -121,7 +121,7 @@ export function NotificationProvider({
   */
   const getToken = async () => {
     return await AsyncStorage.getItem(
-      "studypoint_token"
+      "The Winner Ramanujan Classes_token"
     );
   };
 

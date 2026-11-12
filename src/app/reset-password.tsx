@@ -1,19 +1,19 @@
-﻿import { useState } from "react";
-import {
-  ActivityIndicator,
-  Alert,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+﻿import { Ionicons } from "@expo/vector-icons";
 import { router, useLocalSearchParams } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
+import {
+    ActivityIndicator,
+    Alert,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView,
+    StatusBar,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from "react-native";
 
 const API_BASE_URL = (
   process.env.EXPO_PUBLIC_API_URL ||
@@ -164,7 +164,7 @@ export default function ResetPasswordScreen() {
             />
           </View>
 
-          <Text style={styles.brand}>StudyPoint</Text>
+          <Text style={styles.brand}>The Winner Ramanujan Classes</Text>
 
           <Text style={styles.topSubtitle}>
             Create a new password
@@ -175,7 +175,7 @@ export default function ResetPasswordScreen() {
           <Text style={styles.title}>Reset Password</Text>
 
           <Text style={styles.description}>
-            Create a strong new password for your StudyPoint
+            Create a strong new password for your The Winner Ramanujan Classes
             account.
           </Text>
 
@@ -322,7 +322,7 @@ export default function ResetPasswordScreen() {
         </View>
 
         <Text style={styles.footer}>
-          Â© 2026 StudyPoint
+          Â© 2026 The Winner Ramanujan Classes
         </Text>
       </ScrollView>
     </KeyboardAvoidingView>

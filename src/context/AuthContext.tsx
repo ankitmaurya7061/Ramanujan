@@ -1,9 +1,9 @@
 ﻿import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
+    createContext,
+    useContext,
+    useEffect,
+    useState,
 } from "react";
 
 type UserRole = "user" | "admin";
@@ -61,7 +61,7 @@ const API_BASE_URL = (
   "https://ramanujan-sybq.onrender.com/api"
 ).trim().replace(/\/+$/, "");
 
-const TOKEN_KEY = "studypoint_token";
+const TOKEN_KEY = "The Winner Ramanujan Classes_token";
 const CURRENT_USER_KEY = "currentUser";
 
 export function AuthProvider({

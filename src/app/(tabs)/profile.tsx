@@ -1,24 +1,24 @@
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  ScrollView,
-  Alert,
-  Modal,
-  TextInput,
-  Image,
-} from "react-native";
-import { useCallback, useState } from "react";
-import { router, useFocusEffect } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { router, useFocusEffect } from "expo-router";
+import { useCallback, useState } from "react";
+import {
+    Alert,
+    Image,
+    Modal,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from "react-native";
 
-import { useAuth } from "../../context/AuthContext";
-import { useTests } from "../../context/TestContext";
-import { useCourses } from "../../context/CourseContext";
-import { useProgress } from "../../context/ProgressContext";
-import { useProfilePhoto } from "../../context/ProfilePhotoContext";
 import { useAttendance } from "../../context/AttendanceContext";
+import { useAuth } from "../../context/AuthContext";
+import { useCourses } from "../../context/CourseContext";
+import { useProfilePhoto } from "../../context/ProfilePhotoContext";
+import { useProgress } from "../../context/ProgressContext";
+import { useTests } from "../../context/TestContext";
 
 export default function ProfileScreen() {
   const { user, logout, updateUser, changePassword } = useAuth();

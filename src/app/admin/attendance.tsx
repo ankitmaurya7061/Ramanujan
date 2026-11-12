@@ -1,16 +1,16 @@
-﻿import React, { useCallback, useEffect, useMemo, useState } from "react";
+﻿import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {
-  ActivityIndicator,
-  Alert,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import { router, useFocusEffect } from "expo-router";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+    ActivityIndicator,
+    Alert,
+    Pressable,
+    ScrollView,
+    StyleSheet,
+    Text,
+    View,
+} from "react-native";
 
 import { useAuth } from "../../context/AuthContext";
 import { useCourses } from "../../context/CourseContext";
@@ -68,7 +68,7 @@ export default function AdminAttendanceScreen() {
   const { user, getAllUsers } = useAuth();
 
   const getToken = useCallback(async () => {
-    return AsyncStorage.getItem("studypoint_token");
+    return AsyncStorage.getItem("The Winner Ramanujan Classes_token");
   }, []);
   const { courses } = useCourses();
 

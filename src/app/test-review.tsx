@@ -1,15 +1,15 @@
-﻿import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Ionicons } from "@expo/vector-icons";
+﻿import { Ionicons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
-  ActivityIndicator,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    ActivityIndicator,
+    SafeAreaView,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 
 const API_BASE_URL =
@@ -51,7 +51,7 @@ export default function TestReviewScreen() {
     try {
       setLoading(true);
 
-      const token = await AsyncStorage.getItem("studypoint_token");
+      const token = await AsyncStorage.getItem("The Winner Ramanujan Classes_token");
 
       if (!token) {
         setResult(null);

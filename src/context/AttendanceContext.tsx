@@ -1,12 +1,12 @@
-﻿import React, {
-  createContext,
-  ReactNode,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
+﻿import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+    createContext,
+    ReactNode,
+    useCallback,
+    useContext,
+    useEffect,
+    useState,
 } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export type AttendanceStatus = "present" | "absent";
 
@@ -80,7 +80,7 @@ const AttendanceContext =
 const API_BASE_URL =
   "https://ramanujan-sybq.onrender.com/api";
 
-const TOKEN_KEY = "studypoint_token";
+const TOKEN_KEY = "The Winner Ramanujan Classes_token";
 
 const ADMIN_CACHE_KEY =
   "attendanceRecords_admin_cache";

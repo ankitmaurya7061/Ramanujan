@@ -1,10 +1,10 @@
 ﻿import AsyncStorage from "@react-native-async-storage/async-storage";
 import { File } from "expo-file-system";
 import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
+    createContext,
+    useContext,
+    useEffect,
+    useState,
 } from "react";
 
 export type Course = {
@@ -67,7 +67,7 @@ const SERVER_BASE_URL =
 
 const getToken = async () => {
   return await AsyncStorage.getItem(
-    "studypoint_token"
+    "The Winner Ramanujan Classes_token"
   );
 };
 

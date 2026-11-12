@@ -1,9 +1,9 @@
 ﻿import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
+    createContext,
+    useContext,
+    useEffect,
+    useState,
 } from "react";
 
 export type Lesson = {
@@ -58,7 +58,7 @@ const API_BASE_URL =
 
 const getToken = async () => {
   return await AsyncStorage.getItem(
-    "studypoint_token"
+    "The Winner Ramanujan Classes_token"
   );
 };
 

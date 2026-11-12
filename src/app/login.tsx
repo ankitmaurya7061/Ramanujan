@@ -1,3 +1,6 @@
+
+import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
 import { useState } from "react";
 import {
   ActivityIndicator,
@@ -12,8 +15,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { router } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
 import { useAuth } from "../context/AuthContext";
 
 const COLORS = {
@@ -34,10 +35,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // =========================
   // LOGIN
-  // =========================
-
   const handleLogin = async () => {
     if (!email.trim() || !password.trim()) {
       Alert.alert(
@@ -80,18 +78,12 @@ export default function Login() {
     }
   };
 
-  // =========================
   // FORGOT PASSWORD
-  // =========================
-
   const handleForgotPassword = () => {
     router.push("/forgot-password");
   };
 
-  // =========================
   // SOCIAL LOGIN
-  // =========================
-
   const handleGoogleLogin = () => {
     Alert.alert(
       "Google Login",
@@ -105,10 +97,6 @@ export default function Login() {
       "GitHub login will be available soon."
     );
   };
-
-  // =========================
-  // UI
-  // =========================
 
   return (
     <KeyboardAvoidingView
@@ -127,19 +115,13 @@ export default function Login() {
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
       >
-        {/* =================================
-            TOP GREEN SECTION
-        ================================= */}
+        {/* TOP GREEN SECTION */}
 
         <View style={styles.hero}>
-
-          {/* Decorative circles */}
           <View style={styles.circleOne} />
           <View style={styles.circleTwo} />
 
-          {/* =================================
-              BRAND
-          ================================= */}
+          {/* BRANDING */}
 
           <View style={styles.brandContainer}>
             <View style={styles.logoBox}>
@@ -150,24 +132,20 @@ export default function Login() {
               />
             </View>
 
-            <View style={styles.brandNameRow}>
-              <Text style={styles.studyText}>
-                Study
-              </Text>
+            <Text style={styles.schoolName}>
+              THE WINNER
+            </Text>
 
-              <Text style={styles.pointText}>
-                Point
-              </Text>
-            </View>
+            <Text style={styles.schoolNameHighlight}>
+              RAMANUJAN CLASSES
+            </Text>
 
             <Text style={styles.tagline}>
               Learn • Practice • Grow
             </Text>
           </View>
 
-          {/* =================================
-              BOOK DECORATION
-          ================================= */}
+          {/* BOOK DECORATION */}
 
           <View style={styles.books}>
             <View
@@ -200,18 +178,13 @@ export default function Login() {
           </View>
         </View>
 
-        {/* =================================
-            LOGIN SECTION
-        ================================= */}
+        {/* LOGIN SECTION */}
 
         <View style={styles.loginSection}>
-          {/* Rounded top */}
           <View style={styles.roundedTop} />
 
           <View style={styles.loginContent}>
-            {/* =================================
-                HEADING
-            ================================= */}
+            {/* HEADING */}
 
             <View style={styles.heading}>
               <View style={styles.headingRow}>
@@ -231,15 +204,12 @@ export default function Login() {
               </Text>
             </View>
 
-            {/* =================================
-                EMAIL LABEL
-            ================================= */}
+            {/* EMAIL */}
 
             <Text style={styles.label}>
               EMAIL
             </Text>
 
-            {/* Email Input */}
             <View style={styles.inputBox}>
               <Ionicons
                 name="mail-outline"
@@ -261,15 +231,12 @@ export default function Login() {
               />
             </View>
 
-            {/* =================================
-                PASSWORD LABEL
-            ================================= */}
+            {/* PASSWORD */}
 
             <Text style={styles.label}>
               PASSWORD
             </Text>
 
-            {/* Password Input */}
             <View style={styles.inputBox}>
               <Ionicons
                 name="lock-closed-outline"
@@ -311,9 +278,7 @@ export default function Login() {
               </TouchableOpacity>
             </View>
 
-            {/* =================================
-                FORGOT PASSWORD
-            ================================= */}
+            {/* FORGOT PASSWORD */}
 
             <TouchableOpacity
               style={styles.forgotButton}
@@ -325,9 +290,7 @@ export default function Login() {
               </Text>
             </TouchableOpacity>
 
-            {/* =================================
-                LOGIN BUTTON
-            ================================= */}
+            {/* LOGIN BUTTON */}
 
             <TouchableOpacity
               style={[
@@ -365,9 +328,7 @@ export default function Login() {
               )}
             </TouchableOpacity>
 
-            {/* =================================
-                OR DIVIDER
-            ================================= */}
+            {/* OR DIVIDER */}
 
             <View style={styles.orContainer}>
               <View style={styles.line} />
@@ -379,12 +340,9 @@ export default function Login() {
               <View style={styles.line} />
             </View>
 
-            {/* =================================
-                SOCIAL LOGIN
-            ================================= */}
+            {/* SOCIAL LOGIN */}
 
             <View style={styles.socialContainer}>
-              {/* Google */}
               <TouchableOpacity
                 style={styles.socialButton}
                 onPress={handleGoogleLogin}
@@ -401,7 +359,6 @@ export default function Login() {
                 </Text>
               </TouchableOpacity>
 
-              {/* GitHub */}
               <TouchableOpacity
                 style={styles.socialButton}
                 onPress={handleGithubLogin}
@@ -419,9 +376,7 @@ export default function Login() {
               </TouchableOpacity>
             </View>
 
-            {/* =================================
-                SECURITY
-            ================================= */}
+            {/* SECURITY */}
 
             <View style={styles.securityRow}>
               <View style={styles.securityIcon}>
@@ -439,13 +394,11 @@ export default function Login() {
           </View>
         </View>
 
-        {/* =================================
-            BOTTOM
-        ================================= */}
+        {/* BOTTOM BRANDING */}
 
         <View style={styles.bottomGreen}>
           <Text style={styles.bottomText}>
-            The Winner Ramanujan Classes
+            THE WINNER RAMANUJAN CLASSES
           </Text>
 
           <Text style={styles.bottomSubtext}>
@@ -457,9 +410,7 @@ export default function Login() {
   );
 }
 
-/* ==========================================
-   STYLES
-========================================== */
+// STYLES
 
 const styles = StyleSheet.create({
   container: {
@@ -472,30 +423,13 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.sand,
   },
 
-  /* ========================================
-      HERO
-  ======================================== */
+  // HERO
 
   hero: {
-    height: 385,
+    minHeight: 385,
     backgroundColor: COLORS.cyprus,
     position: "relative",
     overflow: "hidden",
-  },
-
-  skipButton: {
-    position: "absolute",
-    right: 18,
-    top: 18,
-    zIndex: 10,
-    paddingHorizontal: 12,
-    paddingVertical: 7,
-  },
-
-  skipText: {
-    color: COLORS.white,
-    fontSize: 14,
-    fontWeight: "600",
   },
 
   circleOne: {
@@ -520,13 +454,12 @@ const styles = StyleSheet.create({
     bottom: 40,
   },
 
-  /* ========================================
-      BRAND
-  ======================================== */
+  // BRANDING
 
   brandContainer: {
     alignItems: "center",
     paddingTop: 55,
+    paddingHorizontal: 15,
   },
 
   logoBox: {
@@ -540,26 +473,24 @@ const styles = StyleSheet.create({
       "rgba(240, 237, 228, 0.30)",
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 12,
   },
 
-  brandNameRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 11,
-  },
-
-  studyText: {
-    fontSize: 40,
+  schoolName: {
+    fontSize: 25,
     fontWeight: "900",
     color: COLORS.white,
-    letterSpacing: -1.8,
+    textAlign: "center",
+    letterSpacing: 0.5,
   },
 
-  pointText: {
-    fontSize: 40,
+  schoolNameHighlight: {
+    fontSize: 25,
     fontWeight: "900",
     color: COLORS.sand,
-    letterSpacing: -1.8,
+    textAlign: "center",
+    letterSpacing: 0.5,
+    marginTop: 2,
   },
 
   tagline: {
@@ -567,13 +498,11 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "500",
     letterSpacing: 1.3,
-    marginTop: 5,
+    marginTop: 8,
     opacity: 0.92,
   },
 
-  /* ========================================
-      BOOK DECORATION
-  ======================================== */
+  // BOOK DECORATION
 
   books: {
     position: "absolute",
@@ -596,33 +525,21 @@ const styles = StyleSheet.create({
     width: 104,
     right: 0,
     bottom: 3,
-    transform: [
-      {
-        rotate: "-5deg",
-      },
-    ],
+    transform: [{ rotate: "-5deg" }],
   },
 
   bookTwo: {
     width: 118,
     right: 4,
     bottom: 25,
-    transform: [
-      {
-        rotate: "-5deg",
-      },
-    ],
+    transform: [{ rotate: "-5deg" }],
   },
 
   bookThree: {
     width: 90,
     right: 16,
     bottom: 47,
-    transform: [
-      {
-        rotate: "-5deg",
-      },
-    ],
+    transform: [{ rotate: "-5deg" }],
   },
 
   bookIcon: {
@@ -631,9 +548,7 @@ const styles = StyleSheet.create({
     bottom: 20,
   },
 
-  /* ========================================
-      LOGIN SECTION
-  ======================================== */
+  // LOGIN SECTION
 
   loginSection: {
     backgroundColor: COLORS.sand,
@@ -658,9 +573,7 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
 
-  /* ========================================
-      HEADING
-  ======================================== */
+  // HEADING
 
   heading: {
     marginBottom: 23,
@@ -692,9 +605,7 @@ const styles = StyleSheet.create({
     color: COLORS.muted,
   },
 
-  /* ========================================
-      LABEL
-  ======================================== */
+  // LABEL
 
   label: {
     fontSize: 10,
@@ -704,27 +615,23 @@ const styles = StyleSheet.create({
     marginBottom: 7,
   },
 
-  /* ========================================
-      INPUT
-  ======================================== */
+  // INPUT
 
   inputBox: {
-    height: 57,
+    minHeight: 57,
     backgroundColor: COLORS.input,
     borderWidth: 1,
     borderColor: COLORS.border,
     borderRadius: 16,
-
     flexDirection: "row",
     alignItems: "center",
-
     paddingHorizontal: 15,
     marginBottom: 16,
   },
 
   input: {
     flex: 1,
-    height: "100%",
+    height: 55,
     marginLeft: 11,
     color: COLORS.black,
     fontSize: 14,
@@ -737,9 +644,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  /* ========================================
-      FORGOT
-  ======================================== */
+  // FORGOT
 
   forgotButton: {
     alignSelf: "flex-end",
@@ -754,18 +659,14 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
 
-  /* ========================================
-      LOGIN BUTTON
-  ======================================== */
+  // LOGIN BUTTON
 
   loginButton: {
-    height: 57,
+    minHeight: 57,
     borderRadius: 30,
     backgroundColor: COLORS.cyprus,
-
     alignItems: "center",
     justifyContent: "center",
-
     shadowColor: COLORS.black,
     shadowOffset: {
       width: 0,
@@ -806,9 +707,7 @@ const styles = StyleSheet.create({
     marginTop: -2,
   },
 
-  /* ========================================
-      OR
-  ======================================== */
+  // OR
 
   orContainer: {
     flexDirection: "row",
@@ -829,9 +728,7 @@ const styles = StyleSheet.create({
     color: COLORS.muted,
   },
 
-  /* ========================================
-      SOCIAL
-  ======================================== */
+  // SOCIAL
 
   socialContainer: {
     flexDirection: "row",
@@ -841,17 +738,13 @@ const styles = StyleSheet.create({
   socialButton: {
     flex: 1,
     height: 51,
-
     backgroundColor: COLORS.white,
-
     borderWidth: 1,
     borderColor: COLORS.border,
     borderRadius: 16,
-
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-
     gap: 8,
   },
 
@@ -874,15 +767,12 @@ const styles = StyleSheet.create({
     color: "#4285F4",
   },
 
-  /* ========================================
-      SECURITY
-  ======================================== */
+  // SECURITY
 
   securityRow: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-
     marginTop: 19,
     gap: 6,
   },
@@ -891,9 +781,7 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     borderRadius: 12,
-
     backgroundColor: "#E1ECE9",
-
     alignItems: "center",
     justifyContent: "center",
   },
@@ -903,23 +791,23 @@ const styles = StyleSheet.create({
     color: COLORS.muted,
   },
 
-  /* ========================================
-      BOTTOM
-  ======================================== */
+  // BOTTOM
 
   bottomGreen: {
-    height: 82,
+    minHeight: 82,
     backgroundColor: COLORS.cyprus,
-
     alignItems: "center",
     justifyContent: "center",
+    paddingHorizontal: 12,
+    paddingVertical: 12,
   },
 
   bottomText: {
     color: COLORS.sand,
     fontSize: 10,
     fontWeight: "900",
-    letterSpacing: 2,
+    letterSpacing: 1.2,
+    textAlign: "center",
   },
 
   bottomSubtext: {

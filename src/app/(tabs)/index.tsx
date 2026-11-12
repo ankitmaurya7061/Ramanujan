@@ -1,20 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
-import {
-  Animated,
-  Image,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
+import { useEffect, useRef } from "react";
+import {
+    Animated,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from "react-native";
 
 import { useAuth } from "../../context/AuthContext";
-import { useCourses, Course } from "../../context/CourseContext";
-import { useProgress } from "../../context/ProgressContext";
+import { Course, useCourses } from "../../context/CourseContext";
 import { useProfilePhoto } from "../../context/ProfilePhotoContext";
+import { useProgress } from "../../context/ProgressContext";
 
 const COLORS = {
   bg: "#F0EDE4",

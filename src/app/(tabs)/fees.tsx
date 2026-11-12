@@ -1,15 +1,15 @@
 ﻿
-import React, { useEffect, useState } from "react";
-import {
-  ActivityIndicator,
-  Alert,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useEffect, useState } from "react";
+import {
+    ActivityIndicator,
+    Alert,
+    Pressable,
+    ScrollView,
+    StyleSheet,
+    Text,
+    View,
+} from "react-native";
 import RazorpayCheckout from "react-native-razorpay";
 import { getApiUrl } from "../../services/api";
 
@@ -116,7 +116,7 @@ export default function FeesScreen() {
       setError("");
 
       const token = await AsyncStorage.getItem(
-        "studypoint_token"
+        "The Winner Ramanujan Classes_token"
       );
 
       if (!token) {
@@ -197,7 +197,7 @@ export default function FeesScreen() {
 
       const apiUrl = getApiUrl();
       const token = await AsyncStorage.getItem(
-        "studypoint_token"
+        "The Winner Ramanujan Classes_token"
       );
 
       if (!token) {

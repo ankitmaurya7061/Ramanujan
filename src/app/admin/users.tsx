@@ -1,41 +1,41 @@
-﻿import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
+﻿import {
+    useCallback,
+    useEffect,
+    useMemo,
+    useState,
 } from "react";
 
 import {
-  ActivityIndicator,
-  Alert,
-  BackHandler,
-  Image,
-  Pressable,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
+    ActivityIndicator,
+    Alert,
+    BackHandler,
+    Image,
+    Pressable,
+    SafeAreaView,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    View,
 } from "react-native";
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
-  router,
-  useFocusEffect,
+    router,
+    useFocusEffect,
 } from "expo-router";
 
 import {
-  User,
-  useAuth,
+    User,
+    useAuth,
 } from "../../context/AuthContext";
 
 const API_BASE_URL =
   "https://ramanujan-sybq.onrender.com/api";
 
 const TOKEN_KEY =
-  "studypoint_token";
+  "The Winner Ramanujan Classes_token";
 
 const CLASSES = [
   6,

@@ -1,12 +1,12 @@
-﻿import * as ImagePicker from "expo-image-picker";
-import * as FileSystem from "expo-file-system/legacy";
+﻿import * as FileSystem from "expo-file-system/legacy";
+import * as ImagePicker from "expo-image-picker";
 
 import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
+    createContext,
+    ReactNode,
+    useContext,
+    useEffect,
+    useState,
 } from "react";
 
 import { useAuth } from "./AuthContext";
@@ -43,7 +43,7 @@ export function ProfilePhotoProvider({
         ).default;
 
       return await AsyncStorage.getItem(
-        "studypoint_token"
+        "The Winner Ramanujan Classes_token"
       );
     } catch {
       return null;

@@ -3,15 +3,15 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
-  ActivityIndicator,
-  Alert,
-  Image,
-  RefreshControl,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+    ActivityIndicator,
+    Alert,
+    Image,
+    RefreshControl,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from "react-native";
 
 import { useAuth } from "../../context/AuthContext";
@@ -19,7 +19,7 @@ import { useCourses } from "../../context/CourseContext";
 
 const API_BASE_URL =
   "https://ramanujan-sybq.onrender.com/api";
-const TOKEN_KEY = "studypoint_token";
+const TOKEN_KEY = "The Winner Ramanujan Classes_token";
 
 type AttendanceRecord = {
   _id?: string;

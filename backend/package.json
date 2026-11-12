@@ -1,5 +1,5 @@
 {
-  "name": "studypoint-backend",
+  "name": "StudyPoint-backend",
   "version": "1.0.0",
   "description": "StudyPoint E-Learning Backend",
   "main": "src/server.js",
