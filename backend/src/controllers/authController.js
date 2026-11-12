@@ -1,11 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const nodemailer = require("nodemailer");
 const User = require("../models/User");
-const dns = require("node:dns");
-
-// Prefer IPv4 for outgoing SMTP connections
-dns.setDefaultResultOrder("ipv4first");
+const { sendEmail } = require("../services/emailService");
 
 const generateToken = (user) => {
   return jwt.sign(
@@ -20,23 +16,6 @@ const generateToken = (user) => {
     }
   );
 };
-
-/* =====================================================
-   EMAIL CONFIGURATION
-===================================================== */
-
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  connectionTimeout: 15000,
-  greetingTimeout: 15000,
-  socketTimeout: 20000,
-});
 
 /* =====================================================
    SIGNUP
@@ -319,45 +298,30 @@ const forgotPassword = async (
 
     await user.save();
 
-    await transporter.sendMail({
-      from: `"The Winner Ramanujan Classes" <${process.env.EMAIL_USER}>`,
+    try {
+      await sendEmail({
+        to: user.email,
+        subject: "The Winner Ramanujan Classes - Password Reset OTP",
+        text: `Your The Winner Ramanujan Classes password reset OTP is ${otp}. This OTP is valid for 10 minutes.`,
+        html: `
+          <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+            <h2>The Winner Ramanujan Classes</h2>
+            <p>Your password reset OTP is:</p>
+            <h1 style="letter-spacing: 6px; font-size: 32px;">${otp}</h1>
+            <p>This OTP is valid for <strong>10 minutes</strong>.</p>
+            <p>If you did not request a password reset, please ignore this email.</p>
+          </div>
+        `,
+      });
+    } catch (emailErr) {
+      console.error("[ForgotPassword] Failed to deliver reset password email:", emailErr.message);
 
-      to: user.email,
-
-      subject:
-        "The Winner Ramanujan Classes - Password Reset OTP",
-
-      text: `Your The Winner Ramanujan Classes password reset OTP is ${otp}. This OTP is valid for 10 minutes.`,
-
-      html: `
-        <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-          <h2>The Winner Ramanujan Classes</h2>
-
-          <p>
-            Your password reset OTP is:
-          </p>
-
-          <h1
-            style="
-              letter-spacing: 6px;
-              font-size: 32px;
-            "
-          >
-            ${otp}
-          </h1>
-
-          <p>
-            This OTP is valid for
-            <strong>10 minutes</strong>.
-          </p>
-
-          <p>
-            If you did not request a password
-            reset, please ignore this email.
-          </p>
-        </div>
-      `,
-    });
+      return res.status(500).json({
+        success: false,
+        message: "Unable to deliver verification code email. Please check internet connection or server email settings.",
+        error: process.env.NODE_ENV !== "production" ? emailErr.message : undefined,
+      });
+    }
 
     return res.status(200).json({
       success: true,
@@ -373,7 +337,7 @@ const forgotPassword = async (
     return res.status(500).json({
       success: false,
       message:
-        "Server error while sending OTP",
+        "Server error while processing forgot password request",
     });
   }
 };

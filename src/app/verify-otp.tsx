@@ -15,8 +15,10 @@ import {
 import { router, useLocalSearchParams } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
-const API_BASE_URL =
-  "https://ramanujan-sybq.onrender.com/api";
+const API_BASE_URL = (
+  process.env.EXPO_PUBLIC_API_URL ||
+  "https://ramanujan-sybq.onrender.com/api"
+).trim().replace(/\/+$/, "");
 
 const COLORS = {
   cyprus: "#004741",
@@ -64,7 +66,13 @@ export default function VerifyOTPScreen() {
         }
       );
 
-      const data = await response.json();
+      const responseText = await response.text();
+      let data: any = {};
+      try {
+        data = responseText ? JSON.parse(responseText) : {};
+      } catch {
+        data = { message: `Server returned invalid response (status ${response.status})` };
+      }
 
       if (!response.ok) {
         Alert.alert(
@@ -93,8 +101,58 @@ export default function VerifyOTPScreen() {
     }
   };
 
-  const handleResendOTP = () => {
-    router.replace("/forgot-password");
+  const handleResendOTP = async () => {
+    if (!email) {
+      router.replace("/forgot-password");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const response = await fetch(
+        `${API_BASE_URL}/auth/forgot-password`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+          }),
+        }
+      );
+
+      const responseText = await response.text();
+      let data: any = {};
+      try {
+        data = responseText ? JSON.parse(responseText) : {};
+      } catch {
+        data = { message: `Server returned invalid response (status ${response.status})` };
+      }
+
+      if (!response.ok) {
+        Alert.alert(
+          "Unable to Resend",
+          data.message || "Failed to resend code."
+        );
+        return;
+      }
+
+      setOtp("");
+      Alert.alert(
+        "OTP Resent",
+        "A new verification code has been sent to your email."
+      );
+    } catch (error) {
+      console.log("Resend OTP error:", error);
+      Alert.alert(
+        "Connection Error",
+        "Unable to connect to the server. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

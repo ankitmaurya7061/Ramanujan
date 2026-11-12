@@ -1,16 +1,7 @@
 
-const nodemailer = require("nodemailer");
-
 const Fee = require("../models/Fee");
 const Payment = require("../models/Payment");
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+const { sendEmail } = require("./emailService");
 
 const escapeHtml = (value = "") =>
   String(value).replace(/[&<>"']/g, (character) => {
@@ -324,11 +315,7 @@ const sendPaymentReceipt = async (payment) => {
   const html = buildReceiptHtml(receiptData);
   const text = buildReceiptText(receiptData);
 
-  await transporter.sendMail({
-    from: {
-      name: "The Winner Ramanujan Classes",
-      address: process.env.EMAIL_USER,
-    },
+  await sendEmail({
     to: recipient,
     subject: `Fee Payment Receipt | ${receiptNumber}`,
     text,

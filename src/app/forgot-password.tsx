@@ -12,11 +12,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
-const API_BASE_URL =
-  "https://ramanujan-sybq.onrender.com/api";
+const API_BASE_URL = (
+  process.env.EXPO_PUBLIC_API_URL ||
+  "https://ramanujan-sybq.onrender.com/api"
+).trim().replace(/\/+$/, "");
 
 const COLORS = {
   cyprus: "#004741",
@@ -28,7 +30,9 @@ const COLORS = {
 };
 
 export default function ForgotPasswordScreen() {
-  const [email, setEmail] = useState("");
+  const params = useLocalSearchParams();
+  const initialEmail = typeof params.email === "string" ? params.email : "";
+  const [email, setEmail] = useState(initialEmail);
   const [loading, setLoading] = useState(false);
 
   const handleSendOTP = async () => {
@@ -60,7 +64,13 @@ export default function ForgotPasswordScreen() {
         }
       );
 
-      const data = await response.json();
+      const responseText = await response.text();
+      let data: any = {};
+      try {
+        data = responseText ? JSON.parse(responseText) : {};
+      } catch {
+        data = { message: `Server returned invalid response (status ${response.status})` };
+      }
 
       if (!response.ok) {
         Alert.alert(

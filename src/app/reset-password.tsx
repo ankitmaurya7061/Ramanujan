@@ -15,8 +15,10 @@ import {
 import { router, useLocalSearchParams } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
-const API_BASE_URL =
-  "https://ramanujan-sybq.onrender.com/api";
+const API_BASE_URL = (
+  process.env.EXPO_PUBLIC_API_URL ||
+  "https://ramanujan-sybq.onrender.com/api"
+).trim().replace(/\/+$/, "");
 
 const COLORS = {
   cyprus: "#004741",
@@ -89,7 +91,13 @@ export default function ResetPasswordScreen() {
         }
       );
 
-      const data = await response.json();
+      const responseText = await response.text();
+      let data: any = {};
+      try {
+        data = responseText ? JSON.parse(responseText) : {};
+      } catch {
+        data = { message: `Server returned invalid response (status ${response.status})` };
+      }
 
       if (!response.ok) {
         Alert.alert(
